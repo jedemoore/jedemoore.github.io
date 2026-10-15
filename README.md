@@ -1,6 +1,3 @@
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,51 +5,92 @@
 <title>Jed Moore — GIS Analyst</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
-  :root{--bg:#0f1419;--card:#1a222c;--txt:#e8edf2;--mut:#9fb0c0;--acc:#4ea1d3}
+  :root{--bg:#f7f8fa;--ink:#111;--mut:#6b7280;--acc:#1a73e8;--line:#e2e5ea;--card:#fff;--dark:#0a0a0a}
   *{box-sizing:border-box}
-  body{margin:0;font:16px/1.5 system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--txt)}
-  header{padding:48px 20px;text-align:center;background:linear-gradient(135deg,#13202c,#1a2b3a)}
-  header h1{margin:0 0 8px;font-size:2rem}
-  header p{margin:0;color:var(--acc);font-size:1.05rem}
-  main{max-width:820px;margin:0 auto;padding:20px}
-  section{margin:34px 0}
-  h2{border-bottom:2px solid var(--acc);padding-bottom:6px;font-size:1.3rem}
-  .card{background:var(--card);border:1px solid #26323f;border-radius:10px;margin:14px 0;overflow:hidden}
-  .card>button{width:100%;text-align:left;background:none;border:0;color:var(--txt);
-    font:inherit;font-weight:600;padding:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-  .card>button span{color:var(--acc)}
-  .body{display:none;padding:0 16px 16px;color:var(--mut)}
+  body{margin:0;font:16px/1.6 Inter,system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  /* nav */
+  nav{position:sticky;top:0;z-index:999;background:var(--dark);color:#fff;display:flex;
+    align-items:center;justify-content:space-between;padding:16px 32px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.1rem}
+  .dot{width:26px;height:26px;border-radius:50%;background:var(--acc);display:inline-block}
+  .nav-links a{margin-left:34px;font-weight:600;color:#fff}
+  .nav-links a:hover{color:var(--acc)}
+  main{max-width:1180px;margin:0 auto;padding:0 32px}
+  .eyebrow{color:var(--acc);font-weight:700;letter-spacing:.12em;font-size:.8rem;margin:64px 0 20px}
+  .display{font-size:clamp(2rem,6vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin:0 0 32px;max-width:1000px}
+  .lead{font-size:clamp(1.1rem,2.3vw,1.6rem);color:var(--mut);max-width:860px;margin:0 0 80px}
+  h2{font-size:1.9rem;font-weight:800;margin:0}
+  .sub{color:var(--mut);margin:6px 0 10px}
+  .head-row{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:36px}
+  .arrow{font-size:1.6rem}
+  section{margin:72px 0}
+  /* project cards */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:16px 0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .card>button{width:100%;text-align:left;background:none;border:0;color:var(--ink);
+    font:inherit;font-weight:700;font-size:1.15rem;padding:22px 24px;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center}
+  .card>button span{color:var(--acc);font-size:1.5rem}
+  .body{display:none;padding:0 24px 24px;color:var(--mut)}
   .card.open .body{display:block}
-  .body h4{color:var(--txt);margin:14px 0 4px}
+  .body h4{color:var(--ink);margin:16px 0 4px;font-size:1rem}
   ul{margin:0 0 8px;padding-left:20px}
-  .map{height:300px;border-radius:8px;margin-top:10px}
-  .exp{margin:12px 0}
-  .exp b{color:var(--txt)}
+  .map{height:320px;border-radius:10px;margin-top:12px}
+  /* resume */
+  .exp{margin:14px 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .exp b{color:var(--ink)}
   .exp em{color:var(--mut);font-style:normal;float:right;font-size:.9rem}
-  a{color:var(--acc)}
-  .tags span{display:inline-block;background:#22303d;border-radius:14px;padding:4px 11px;margin:3px;font-size:.85rem}
-  footer{text-align:center;color:var(--mut);padding:30px 20px;font-size:.9rem}
-  @media(max-width:600px){header h1{font-size:1.6rem}.exp em{float:none;display:block}}
+  h3{margin:34px 0 6px;font-size:1.25rem}
+  .tags span{display:inline-block;background:#eef1f6;border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;margin:4px;font-size:.9rem}
+  .contact a{color:var(--acc);font-weight:600}
+  footer{border-top:1px solid var(--line);text-align:center;color:var(--mut);padding:40px 20px;font-size:.9rem}
+  @media(max-width:600px){
+    nav{padding:14px 18px}.nav-links a{margin-left:18px;font-size:.9rem}
+    main{padding:0 18px}.exp em{float:none;display:block}
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>Jed Moore</h1>
-  <p>GIS &amp; Geospatial Analyst — remote sensing, GIS automation, and web mapping</p>
-</header>
 
-<main>
+<nav>
+  <a class="brand" href="#top"><span class="dot"></span>Jed Moore</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+
   <section id="about">
-    <h2>About</h2>
-    <p>I'm Jed Moore, currently studying Geographic Information Science &amp; Technology at
-    Texas A&amp;M University. Through school and internships, I've developed experience working
-    with spatial databases, remote sensing, GIS automation, and web mapping. I'm particularly
-    interested in applying geospatial technology to complex problems in engineering, intelligence,
-    and national security.</p>
+    <div class="eyebrow">ABOUT</div>
+    <h1 class="display">Geospatial Technology · GIS · Remote Sensing</h1>
+    <p class="lead">I'm Jed Moore, and I'm currently studying Geographic Information Science
+    &amp; Technology at Texas A&amp;M University. Through school and internships, I've developed
+    experience working with spatial databases, remote sensing, GIS automation, and web mapping.
+    I'm particularly interested in applying geospatial technology to complex problems in
+    engineering, intelligence, and national security.</p>
+
+    <div class="head-row">
+      <div>
+        <h2>More About Me</h2>
+        <div class="sub">Outside of work and class!</div>
+      </div>
+      <span class="arrow">↗</span>
+    </div>
+    <ul>
+      <li>Philanthropy Chair, Century Men's Society at Texas A&amp;M — won over $11,000 for
+      Camp Kesem and organized a 5k race raising over $4,000.</li>
+      <li>Treasurer, Freshman Leaders in Progress — managed a $16,000 annual budget.</li>
+      <li>Activities: The Big Event, Fish Camp Counselor, 250+ volunteer hours.</li>
+      <li>Spanish speaker (intermediate).</li>
+    </ul>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+  <section id="works">
+    <div class="head-row"><h2>Works</h2></div>
 
     <div class="card">
       <button onclick="this.parentElement.classList.toggle('open')">
@@ -116,11 +154,14 @@
   </section>
 
   <section id="resume">
-    <h2>Resume</h2>
+    <div class="head-row"><h2>Resume</h2></div>
+
     <h3>Education</h3>
     <div class="exp">
       <b>Texas A&amp;M University</b> <em>Expected December 2026</em><br>
-      B.S. in Geographic Information Science and Technology — College Station, TX
+      B.S. in Geographic Information Science and Technology — College Station, TX<br>
+      <small>Coursework: GIS Programming, Geodatabases, Remote Sensing, Digital Image Processing,
+      Data Analysis, GNSS, Cartography &amp; Visualization, Information Science, Geography of Terrorism.</small>
     </div>
 
     <h3>Experience</h3>
@@ -154,50 +195,6 @@
       </ul>
     </div>
 
-    <h3>Leadership &amp; Involvement</h3>
-    <div class="exp">
-      <b>Philanthropy Chair — Century Men's Society at Texas A&amp;M</b> <em>January 2023 – Present</em>
-      <ul>
-        <li>Chaired external philanthropy competitions, managed budgets and schedules, and won
-        over $11,000 for Camp Kesem.</li>
-        <li>Chaired and developed a 5k philanthropy race, organizing 100+ members and raising
-        over $4,000 for Camp Kesem.</li>
-      </ul>
-    </div>
-    <div class="exp">
-      <b>Treasurer — Freshman Leaders in Progress</b> <em>August 2023 – May 2024</em>
-      <ul><li>Managed a $16,000 annual budget.</li></ul>
-    </div>
-
     <h3>Skills</h3>
     <div class="tags">
-      <span>ArcGIS Pro</span><span>ESRI Suite</span><span>ENVI</span><span>AWS</span><span>Azure</span>
-      <span>Microsoft Office Suite</span><span>Databricks</span><span>Python</span><span>SQL</span>
-      <span>R</span><span>Arcade</span><span>Spanish (Intermediate)</span>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:jedemoore@gmail.com">jedemoore@gmail.com</a></p>
-    <p>Phone: (458) 202-4336</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/jedemoore">linkedin.com/in/jedemoore</a></p>
-  </section>
-</main>
-
-<footer>© 2026 Jed Moore</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-  // Map data (stored inside this file).
-  // NOTE: Precise project coordinates were not provided in the source files.
-  // The point below marks the general South China Sea artificial-islands region
-  // (Spratly Islands area) for illustration. Replace with verified coordinates. [ADD]
-  var points = [
-    { lat: 9.55, lng: 112.9, title: "Spratly Islands region",
-      note: "General South China Sea artificial-islands study area (2013–2024). Exact coordinates: [ADD]" }
-  ];
-
-  var map = L.map('map').setView([9.55, 112.9], 5);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-    { attribution: 'Tiles © Esri' }).addT
+      <span>Ar
