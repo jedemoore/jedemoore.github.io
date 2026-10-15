@@ -1,5 +1,5 @@
 
-Jed's Portfolio
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
