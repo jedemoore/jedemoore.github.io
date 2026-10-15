@@ -1,0 +1,72 @@
+/* style.css — shared by every page */
+:root{
+  --bg:#f7f8fa; --ink:#111; --mut:#6b7280; --acc:#1a73e8;
+  --line:#e2e5ea; --card:#fff; --dark:#0a0a0a;
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 Inter,system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+
+/* top nav — shared menu */
+nav{position:sticky;top:0;z-index:999;background:var(--dark);color:#fff;display:flex;
+  align-items:center;justify-content:space-between;padding:16px 32px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.1rem;color:#fff}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--acc);display:inline-block}
+.nav-links a{margin-left:34px;font-weight:600;color:#fff}
+.nav-links a:hover,.nav-links a.active{color:var(--acc)}
+
+/* layout */
+main{max-width:1180px;margin:0 auto;padding:0 32px}
+section{margin:64px 0}
+.eyebrow{color:var(--acc);font-weight:700;letter-spacing:.12em;font-size:.8rem;margin:64px 0 20px}
+.display{font-size:clamp(2rem,6vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin:0 0 32px;max-width:1000px}
+.lead{font-size:clamp(1.1rem,2.3vw,1.6rem);color:var(--mut);max-width:860px;margin:0 0 48px}
+h1,h2,h3{letter-spacing:-.01em}
+h2{font-size:1.9rem;font-weight:800;margin:0}
+h3{margin:34px 0 6px;font-size:1.25rem}
+.sub{color:var(--mut);margin:6px 0 10px}
+.head-row{display:flex;justify-content:space-between;align-items:flex-start;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:36px}
+.arrow{font-size:1.6rem}
+ul{margin:0 0 8px;padding-left:20px}
+
+/* buttons / links */
+.btn{display:inline-block;background:var(--acc);color:#fff;font-weight:600;
+  padding:12px 22px;border-radius:999px;margin-top:8px}
+.btn:hover{opacity:.9}
+.backlink{color:var(--acc);font-weight:600;display:inline-block;margin:40px 0 0}
+
+/* project cards (projects.html) */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:26px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.card h3{margin:0 0 8px}
+.card p{color:var(--mut);margin:0 0 14px}
+.card .go{color:var(--acc);font-weight:700}
+
+/* project detail */
+.detail h4{margin:26px 0 4px;font-size:1.05rem}
+.detail p,.detail li{color:var(--mut)}
+.map{height:360px;border-radius:12px;margin-top:14px;border:1px solid var(--line)}
+figure{margin:18px 0}
+figcaption{color:var(--mut);font-size:.9rem;margin-top:6px}
+
+/* resume */
+.exp{margin:14px 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.exp b{color:var(--ink)}
+.exp em{color:var(--mut);font-style:normal;float:right;font-size:.9rem}
+.tags span{display:inline-block;background:#eef1f6;border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;margin:4px;font-size:.9rem}
+
+/* footer — email on every page */
+footer{border-top:1px solid var(--line);text-align:center;color:var(--mut);
+  padding:40px 20px;font-size:.9rem;margin-top:64px}
+footer a{color:var(--acc);font-weight:600}
+
+@media(max-width:600px){
+  nav{padding:14px 18px}
+  .nav-links a{margin-left:16px;font-size:.9rem}
+  main{padding:0 18px}
+  .exp em{float:none;display:block}
+}
